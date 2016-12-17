@@ -43,24 +43,24 @@ namespace as
         };
         virtual ~Timer() {};
 
-        virtual void
+        void
         reset_start_time() {
             _start_time = get_current_time();
         }
 
-        virtual std::chrono::high_resolution_clock::time_point 
+        std::chrono::high_resolution_clock::time_point 
         get_current_time() {
             return std::chrono::high_resolution_clock::now();
         }
 
         // Seconds
-        virtual double 
+        double 
         time() {
             return (_time() / 1000.0f);
         }
 
         // Milliseconds
-        virtual int 
+        int 
         time_ms() {
             return static_cast<int>(_time());
         }
@@ -68,7 +68,7 @@ namespace as
     private:
         std::chrono::high_resolution_clock::time_point _start_time;
 
-        virtual double
+        double
         _time() {
             auto t2 = std::chrono::high_resolution_clock::now();
             auto time_span = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - _start_time);
@@ -86,7 +86,7 @@ namespace as
         int floating_point_digits = 3;
         Timer timer;
         
-        Logger(std::ostream& stream) : _stream(stream), _mutex() {}
+        Logger(std::ostream& stream) : _stream(stream) {}
         virtual ~Logger() {};
     
         template<class T, class... Args> Logger& 
@@ -109,7 +109,6 @@ namespace as
         std::ostream &_stream;
         int _args_size = 0;
         int _args_size_init = 0;
-        std::mutex _mutex;
 
         template<class T, class... Args> void
         _print(T t, Args... args) {
