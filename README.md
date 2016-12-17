@@ -1,8 +1,9 @@
 # Logger
 
-A simple C++ logger, originally developed for the [aci-comm](https://github.com/UniTN-Mechatronics/aci-comm)project.
+A simple C++ logger, originally developed for the [aci-comm](https://github.com/UniTN-Mechatronics/aci-comm) project.
 Require at least C++11. Tested on MacOS, OSX, Linux.
 
+This version of Logger is NOT threadsafe.
 
 ## Usage
 ```C++
